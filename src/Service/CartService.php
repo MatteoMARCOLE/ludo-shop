@@ -115,5 +115,3 @@ class CartService
         return $this->getItemCount($cart);
     }
 }
-// break
-this is invalid PHP;
