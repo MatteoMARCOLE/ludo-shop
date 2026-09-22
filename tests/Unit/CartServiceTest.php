@@ -47,7 +47,7 @@ class CartServiceTest extends TestCase
         $this->assertSame(25.00, $this->service->getTotal($cart));
     }
 
-    public function testMultipleItems(): void 
+    public function testMultipleItems(): void
     {
         $user = $this->createStub(User::class);
         $cart = new Cart($user);
@@ -73,7 +73,7 @@ class CartServiceTest extends TestCase
         $this->assertSame(59.00, $this->service->getTotal($cart));
     }
 
-    public function testQuantityMultiplier(): void 
+    public function testQuantityMultiplier(): void
     {
         $user = $this->createStub(User::class);
         $cart = new Cart($user);
