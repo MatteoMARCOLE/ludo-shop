@@ -17,14 +17,16 @@ class PromotionServiceTest extends TestCase
         $this->service = new PromotionService();
     }
 
-    public function testReturnsNormalPriceWhenNoPromotion(): void {
+    public function testReturnsNormalPriceWhenNoPromotion(): void
+    {
         $product = $this->createProduct(50.00);
 
         $this->assertSame(50.00, $this->service->getCurrentPrice($product));
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testReturnsPromoPriceDuringPeriod(): void {
+    public function testReturnsPromoPriceDuringPeriod(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(40.00);
@@ -35,7 +37,8 @@ class PromotionServiceTest extends TestCase
         $this->assertTrue($this->service->isOnPromotion($product));
     }
 
-    public function testReturnsNormalPriceBeforePromotionPeriod(): void {
+    public function testReturnsNormalPriceBeforePromotionPeriod(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(40.00);
@@ -46,7 +49,8 @@ class PromotionServiceTest extends TestCase
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testReturnsNormalPriceAfterPromotionPeriod(): void {
+    public function testReturnsNormalPriceAfterPromotionPeriod(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(40.00);
@@ -57,7 +61,8 @@ class PromotionServiceTest extends TestCase
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testPromoPriceEqualToNormalIsNotActive(): void {
+    public function testPromoPriceEqualToNormalIsNotActive(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(50.00);
@@ -68,7 +73,8 @@ class PromotionServiceTest extends TestCase
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testPromoPriceGreaterThanNormalIsNotActive(): void {
+    public function testPromoPriceGreaterThanNormalIsNotActive(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(60.00);
@@ -79,7 +85,8 @@ class PromotionServiceTest extends TestCase
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testInvertedDatesAreNotActive(): void {
+    public function testInvertedDatesAreNotActive(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(40.00);
@@ -90,7 +97,8 @@ class PromotionServiceTest extends TestCase
         $this->assertFalse($this->service->isOnPromotion($product));
     }
 
-    public function testBoundaryStartIsIncluded(): void {
+    public function testBoundaryStartIsIncluded(): void
+    {
         $product = $this->createProduct(50.00);
 
         $product->setPromoPrice(40.00);
@@ -101,7 +109,8 @@ class PromotionServiceTest extends TestCase
         $this->assertTrue($this->service->isOnPromotion($product));
     }
 
-    public function testBoundaryEndIsIncluded(): void {
+    public function testBoundaryEndIsIncluded(): void
+    {
         $product = $this->createProduct(50.00);
         $now = new \DateTimeImmutable('2026-09-15 12:00:00');
 
