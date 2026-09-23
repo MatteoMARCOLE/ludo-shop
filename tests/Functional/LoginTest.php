@@ -46,7 +46,7 @@ class LoginTest extends FunctionalTestCase
         $this->assertSelectorTextContains('.alert-danger', 'Invalid credentials');
     }
 
-    public function testLogoutRedirectsToHome(): void 
+    public function testLogoutRedirectsToHome(): void
     {
         $this->login('client@example.com');
 
