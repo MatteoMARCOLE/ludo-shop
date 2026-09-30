@@ -19,7 +19,7 @@ class CategoryController extends AbstractController
         $includeMature = $this->isMatureAllowed();
 
         $categories = $categoryRepository->findAll();
-
+ 
         $counts = [];
         foreach ($categories as $category) {
             $counts[$category->getId()] = $productRepository->countActiveByCategory($category, $includeMature);
